@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="@color/colorPrimary"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/problem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textSize="30dp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textSize="30dp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TableLayout
+            android:id="@+id/keypad_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:visibility="visible">
+
+            <TableRow
+                android:id="@+id/keypad_row_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/button_1"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress1"
+                    android:text="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_2"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress2"
+                    android:text="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_3"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress3"
+                    android:text="3"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/keypad_row_2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/button_4"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress4"
+                    android:text="4"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_5"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress5"
+                    android:text="5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_6"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress6"
+                    android:text="6"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/keypad_row_3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/button_7"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress7"
+                    android:text="7"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_8"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress8"
+                    android:text="8"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_9"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress9"
+                    android:text="9"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/keypad_row_4"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/button_-"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPressMinus"
+                    android:text="-"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_0"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPress0"
+                    android:text="0"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+
+                <Button
+                    android:id="@+id/button_ent"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/keypad_button"
+                    android:onClick="buttonPressBack"
+                    android:text="⌫"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="50dp" />
+            </TableRow>
+
+        </TableLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="@color/colorPrimary">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1:00:00"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textSize="50dp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Score: 0"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textSize="37dp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
