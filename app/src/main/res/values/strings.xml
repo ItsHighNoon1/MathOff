@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MathOff</string>
+    <string name="logo_desc">MathOff</string>
+
+    <string name="username_prompt">Username</string>
+    <string name="password_prompt">Password</string>
+    <string name="login_prompt">Login</string>
+    <string name="register">Don\'t have an account? Register here</string>
 </resources>
