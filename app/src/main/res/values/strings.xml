@@ -2,8 +2,15 @@
     <string name="app_name">MathOff</string>
     <string name="logo_desc">MathOff</string>
 
+    <string name="wrong_login">Invalid login</string>
+    <string name="timed_out">Could not connect to the server</string>
+
     <string name="username_prompt">Username</string>
     <string name="password_prompt">Password</string>
     <string name="login_prompt">Login</string>
     <string name="register">Don\'t have an account? Register here</string>
+    <string name="play">Play</string>
+    <string name="singleplayer">Solo</string>
+    <string name="peertopeer">Duel</string>
+    <string name="server">Battle Royale</string>
 </resources>

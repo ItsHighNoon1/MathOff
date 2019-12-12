@@ -43,7 +43,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:onClick="login"
         android:text="@string/login_prompt"
         app:layout_constraintEnd_toEndOf="@+id/password_input"
         app:layout_constraintStart_toStartOf="@+id/password_input"
@@ -76,9 +75,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:onClick="register"
         android:text="@string/register"
+        android:textColor="@color/colorAccent"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/colorError"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/username_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
