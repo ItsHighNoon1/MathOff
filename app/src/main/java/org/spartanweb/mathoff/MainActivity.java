@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 running = false;
                 timerText.setText("0:00");
+                ScoreSubmitTask sst = new ScoreSubmitTask();
+                sst.execute(score, ((MathOff)getApplication()).getToken(), this);
             }
         }.start();
         newProblem();
