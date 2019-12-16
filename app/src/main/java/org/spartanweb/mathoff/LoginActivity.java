@@ -11,20 +11,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
-
 public class LoginActivity extends AppCompatActivity {
-
-    private static final String loginEndpoint = "https://alt.spartanweb.org/tolken";
 
     private EditText userInput;
     private EditText passwordInput;
@@ -43,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 LoginTask lt = new LoginTask();
-                lt.execute(loginEndpoint, userInput.getText().toString(), passwordInput.getText().toString(), bruh);
+                lt.execute(userInput.getText().toString(), passwordInput.getText().toString(), bruh);
             }
         });
     }
@@ -68,58 +58,24 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(browserIntent);
     }
 
+    private static String login(String username, String password) {
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("user", username);
+        parameters.put("password", password);
+
+        return MathOff.httpsRequest(parameters);
+    }
+
     private static class LoginTask extends AsyncTask<Object, Void, String> {
         private Object definitelyNotAnActivity;
 
         protected String doInBackground(Object... params) {
-            definitelyNotAnActivity = params[3];
-            return login((String)params[0], (String)params[1], (String)params[2]);
+            definitelyNotAnActivity = params[2];
+            return login((String)params[0], (String)params[1]);
         }
 
         protected void onPostExecute(String result) {
             ((LoginActivity)definitelyNotAnActivity).endpointResponse(result);
-        }
-    }
-
-    private static String login(String endpoint, String username, String password) {
-        try {
-            Map<String, String> parameters = new HashMap<>();
-            parameters.put("user", username);
-            parameters.put("password", password);
-
-            StringBuilder paramJoiner = new StringBuilder();
-            for (Map.Entry<String, String> param : parameters.entrySet()) {
-                paramJoiner.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-                paramJoiner.append("=");
-                paramJoiner.append(URLEncoder.encode(param.getValue(), "UTF-8"));
-                paramJoiner.append("&");
-            }
-            String fullParams = paramJoiner.toString();
-            fullParams = fullParams.substring(0, fullParams.length() - 1);
-
-            URL url = new URL(endpoint);
-            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
-
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            conn.setRequestProperty("charset", "utf-8");
-            conn.setRequestProperty("Content-Length", Integer.toString(fullParams.length()));
-            conn.setConnectTimeout(5000);
-            conn.setReadTimeout(5000);
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-            conn.connect();
-
-            DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-            out.writeBytes(fullParams);
-            out.flush();
-            out.close();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String sessionToken = in.readLine();
-            in.close();
-            return sessionToken;
-        } catch (IOException e) {
-            return "&";
         }
     }
 

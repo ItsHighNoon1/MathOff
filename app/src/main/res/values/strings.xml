@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MathOff</string>
     <string name="logo_desc">MathOff</string>
+    <string name="endpoint">https://alt.spartanweb.org/api/mathoff</string>
 
     <string name="wrong_login">Invalid login</string>
     <string name="timed_out">Could not connect to the server</string>

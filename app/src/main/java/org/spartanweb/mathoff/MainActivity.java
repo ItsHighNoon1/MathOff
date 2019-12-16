@@ -2,12 +2,15 @@ package org.spartanweb.mathoff;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         timerText = findViewById(R.id.timer);
         scoreText = findViewById(R.id.score);
         start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     public void start() {
@@ -110,5 +118,29 @@ public class MainActivity extends AppCompatActivity {
     public void buttonPress9(View view) { buttonPress(9); }
     public void buttonPressMinus(View view) { buttonPress(-1); }
     public void buttonPressBack(View view) { buttonPress(-2); }
+
+    public void scoreSubmitted(String response) {
+        this.finish();
+    }
+
+    private static String submitScore(int score, String token) {
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("score", Integer.toString(score));
+        parameters.put("token", token);
+        return MathOff.httpsRequest(parameters);
+    }
+
+    private static class ScoreSubmitTask extends AsyncTask<Object, Void, String> {
+        private Object definitelyNotAnActivity;
+
+        protected String doInBackground(Object... params) {
+            definitelyNotAnActivity = params[2];
+            return submitScore((Integer)params[0], (String)params[1]);
+        }
+
+        protected void onPostExecute(String result) {
+            ((MainActivity)definitelyNotAnActivity).scoreSubmitted(result);
+        }
+    }
 
 }
