@@ -42,11 +42,6 @@ public class MainActivity extends AppCompatActivity {
         start();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
     public void start() {
         timerText.setText("1:00");
         score = 0;

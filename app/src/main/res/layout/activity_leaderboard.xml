@@ -32,43 +32,9 @@
         app:layout_constraintTop_toBottomOf="@+id/head_image">
 
         <LinearLayout
+            android:id="@+id/leaderboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/login_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="login"
-                android:text="@string/login_prompt"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/play_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="play"
-                android:text="@string/play"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/leaderboard_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="leaderboard"
-                android:text="@string/leaderboard"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/debug"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" />
-
-        </LinearLayout>
+            android:orientation="vertical" />
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

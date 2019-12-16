@@ -34,4 +34,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(playIntent);
     }
 
+    public void leaderboard(View view) {
+        Intent playIntent = new Intent(this, LeaderboardActivity.class);
+        startActivity(playIntent);
+    }
+
 }
