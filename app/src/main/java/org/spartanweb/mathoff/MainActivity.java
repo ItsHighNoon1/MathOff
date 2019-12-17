@@ -58,8 +58,10 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 running = false;
                 timerText.setText("0:00");
-                ScoreSubmitTask sst = new ScoreSubmitTask();
-                sst.execute(score, ((MathOff)getApplication()).getToken(), this);
+                if(((MathOff)getApplication()).getToken() != null) {
+                    ScoreSubmitTask sst = new ScoreSubmitTask();
+                    sst.execute(score, ((MathOff)getApplication()).getToken(), this);
+                }
             }
         }.start();
         newProblem();
@@ -116,10 +118,6 @@ public class MainActivity extends AppCompatActivity {
     public void buttonPressMinus(View view) { buttonPress(-1); }
     public void buttonPressBack(View view) { buttonPress(-2); }
 
-    public void scoreSubmitted(String response) {
-        this.finish();
-    }
-
     private static String submitScore(int score, String token) {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("score", Integer.toString(score));
@@ -136,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-            ((MainActivity)definitelyNotAnActivity).scoreSubmitted(result);
+            ((MainActivity)definitelyNotAnActivity).finish();
         }
     }
 

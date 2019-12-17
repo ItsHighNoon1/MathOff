@@ -44,7 +44,7 @@
                 android:background="@drawable/desk_button"
                 android:onClick="login"
                 android:text="@string/login_prompt"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="30sp" />
 
             <Button
@@ -55,7 +55,7 @@
                 android:background="@drawable/desk_button"
                 android:onClick="play"
                 android:text="@string/play"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="30sp" />
 
             <Button
@@ -66,7 +66,7 @@
                 android:background="@drawable/desk_button"
                 android:onClick="leaderboard"
                 android:text="@string/leaderboard"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="30sp" />
 
             <TextView
