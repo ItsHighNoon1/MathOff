@@ -7,6 +7,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.view.ViewCompat;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,12 +29,36 @@ public class LeaderboardActivity extends AppCompatActivity {
     }
 
     public void boardFetched(String data) {
-        System.err.println(data);
         String[] rows = data.split("\"");
         for(int i = 0; i < rows.length; i++) {
-            TextView tv = new TextView(this);
-            tv.setText(rows[i]);
-            scoreboard.addView(tv);
+            String[] pieces = rows[i].split("'");
+
+            TextView position = new TextView(this);
+            TextView name = new TextView(this);
+            TextView score = new TextView(this);
+            position.setId(ViewCompat.generateViewId());
+            name.setId(ViewCompat.generateViewId());
+            score.setId(ViewCompat.generateViewId());
+
+            position.setText(Integer.toString(i));
+            position.setTextSize(20.0f);
+            name.setText(pieces[1]);
+            name.setTextSize(20.0f);
+            score.setText(pieces[0]);
+            score.setTextSize(20.0f);
+
+            ConstraintLayout viewRow = new ConstraintLayout(this);
+            viewRow.addView(position);
+            viewRow.addView(name);
+            viewRow.addView(score);
+
+            ConstraintSet cs = new ConstraintSet();
+            cs.clone(viewRow);
+            cs.centerHorizontally(name.getId(), ConstraintSet.PARENT_ID);
+            cs.connect(score.getId(), score.getRight(), viewRow.getId(), viewRow.getRight());
+            cs.applyTo(viewRow);
+
+            scoreboard.addView(viewRow);
         }
     }
 
