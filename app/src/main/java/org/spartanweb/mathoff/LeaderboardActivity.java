@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,18 +18,22 @@ import java.util.Map;
 public class LeaderboardActivity extends AppCompatActivity {
 
     private LinearLayout scoreboard;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
         scoreboard = findViewById(R.id.leaderboard);
+        progressBar = findViewById(R.id.progress);
 
         FetchLeaderboardTask flt = new FetchLeaderboardTask();
         flt.execute(this);
     }
 
     public void boardFetched(String data) {
+        progressBar.setVisibility(View.GONE);
+
         String[] rows = data.split("\"");
         for(int i = 0; i < rows.length; i++) {
             String[] pieces = rows[i].split("'");
@@ -40,8 +45,8 @@ public class LeaderboardActivity extends AppCompatActivity {
             name.setId(ViewCompat.generateViewId());
             score.setId(ViewCompat.generateViewId());
 
-            position.setText(Integer.toString(i));
-            position.setTextSize(20.0f);
+            position.setText(Integer.toString(i + 1));
+            position.setTextSize(30.0f);
             name.setText(pieces[1]);
             name.setTextSize(20.0f);
             score.setText(pieces[0]);
@@ -54,8 +59,11 @@ public class LeaderboardActivity extends AppCompatActivity {
 
             ConstraintSet cs = new ConstraintSet();
             cs.clone(viewRow);
-            cs.centerHorizontally(name.getId(), ConstraintSet.PARENT_ID);
-            cs.connect(score.getId(), score.getRight(), viewRow.getId(), viewRow.getRight());
+            cs.connect(name.getId(), ConstraintSet.LEFT, position.getId(), ConstraintSet.RIGHT, MathOff.toDp(30, this.getResources().getDisplayMetrics()));
+            cs.connect(score.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+            cs.centerVertically(position.getId(), ConstraintSet.PARENT_ID);
+            cs.centerVertically(name.getId(), ConstraintSet.PARENT_ID);
+            cs.centerVertically(score.getId(), ConstraintSet.PARENT_ID);
             cs.applyTo(viewRow);
 
             scoreboard.addView(viewRow);

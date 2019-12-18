@@ -1,6 +1,9 @@
 package org.spartanweb.mathoff;
 
 import android.app.Application;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -22,6 +25,10 @@ public class MathOff extends Application {
 
     public void setToken(String token) {
         sessionToken = token;
+    }
+
+    public static int toDp(int dp, DisplayMetrics dm) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, dm);
     }
 
     public static String httpsRequest(Map<String, String> parameters) {
