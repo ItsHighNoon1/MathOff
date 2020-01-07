@@ -1,3 +1,6 @@
+# Workspace data about the IOS port
+ios/MathOff/MathOff.xcodeproj
+
 # Built application files
 *.apk
 *.aar
